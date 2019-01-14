@@ -8,8 +8,6 @@
 
 import UIKit
 
-/// AppDelegate
-let hx_appDelegate = UIApplication.shared.delegate as! AppDelegate
 
 /// 主window
 let hx_keyWindow = UIApplication.shared.keyWindow
