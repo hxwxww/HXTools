@@ -9,21 +9,21 @@
 import UIKit
 
 // MARK: -  HXReuseable
-protocol HXReuseable { }
+public protocol HXReuseable { }
 extension HXReuseable {
     
     /// 重用标识
-    static var reuseIdentifier: String {
+    public static var reuseIdentifier: String {
         return "\(self)"
     }
     
     /// nib
-    static var nib: UINib? {
+    public static var nib: UINib? {
         return UINib(nibName: "\(self)", bundle: nil)
     }
     
     /// nib的路径
-    static var nibPath: String? {
+    public static var nibPath: String? {
         return Bundle.main.path(forResource: "\(self)", ofType: "nib")
     }
     
@@ -36,7 +36,7 @@ extension UITableView {
     /// 注册cell
     ///
     /// - Parameter cellClass: cellCalss
-    func hx_registerCell<T: UITableViewCell>(cellClass: T.Type) {
+    open func hx_registerCell<T: UITableViewCell>(cellClass: T.Type) {
         if T.nibPath != nil {
             /// 如果有nib，注册nib
             register(T.nib, forCellReuseIdentifier: T.reuseIdentifier)
@@ -50,7 +50,7 @@ extension UITableView {
     ///
     /// - Parameter indexPath: indexPath
     /// - Returns: 可重用的cell
-    func hx_dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath) -> T {
+    open func hx_dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("你还没有注册cell，请先调用“hx_registerCell(cellClass:)”注册cell")
         }
@@ -66,7 +66,7 @@ extension UICollectionView {
     /// 注册cell
     ///
     /// - Parameter cellClass: cellCalss
-    func hx_registerCell<T: UICollectionViewCell>(cellClass: T.Type) {
+    open func hx_registerCell<T: UICollectionViewCell>(cellClass: T.Type) {
         if T.nibPath != nil {
             /// 如果有nib，注册nib
             register(T.nib, forCellWithReuseIdentifier: T.reuseIdentifier)
@@ -80,7 +80,7 @@ extension UICollectionView {
     ///
     /// - Parameter indexPath: indexPath
     /// - Returns: 可重用的cell
-    func hx_dequeueReusableCell<T: UICollectionViewCell>(indexPath: IndexPath) -> T {
+    open func hx_dequeueReusableCell<T: UICollectionViewCell>(indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("你还没有注册cell，请先调用“hx_registerCell(cellClass:)”注册cell")
         }
@@ -90,7 +90,7 @@ extension UICollectionView {
     /// 注册头部
     ///
     /// - Parameter reusableViewClass: reusableViewClass
-    func hx_registerHeader<T: UICollectionReusableView>(reusableViewClass: T.Type) {
+    open func hx_registerHeader<T: UICollectionReusableView>(reusableViewClass: T.Type) {
         if T.nibPath != nil {
             /// 如果有nib，注册nib
             register(T.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: T.reuseIdentifier)
@@ -104,7 +104,7 @@ extension UICollectionView {
     ///
     /// - Parameter indexPath: indexPath
     /// - Returns: 可重用的header
-    func hx_dequeueReusableHeader<T: UICollectionReusableView>(indexPath: IndexPath) -> T {
+    open func hx_dequeueReusableHeader<T: UICollectionReusableView>(indexPath: IndexPath) -> T {
         guard let header = dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("你还没有注册header，请先调用“hx_registerHeader(reusableViewClass:)”注册header")
         }
@@ -114,7 +114,7 @@ extension UICollectionView {
     /// 注册尾部
     ///
     /// - Parameter reusableViewClass: reusableViewClass
-    func hx_registerFooter<T: UICollectionReusableView>(reusableViewClass: T.Type) {
+    open func hx_registerFooter<T: UICollectionReusableView>(reusableViewClass: T.Type) {
         if T.nibPath != nil {
             /// 如果有nib，注册nib
             register(T.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: T.reuseIdentifier)
@@ -125,7 +125,7 @@ extension UICollectionView {
     }
     
     /// 获取可重用的尾部
-    func hx_dequeueReusableFooter<T: UICollectionReusableView>(indexPath: IndexPath) -> T {
+    open func hx_dequeueReusableFooter<T: UICollectionReusableView>(indexPath: IndexPath) -> T {
         guard let footer = dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("你还没有注册footer，请先调用“hx_registerFooter(reusableViewClass:)”注册footer")
         }

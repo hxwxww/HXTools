@@ -16,7 +16,7 @@ extension Array {
     /// - Parameters:
     ///   - index: 替换的下标
     ///   - element: 要替换的元素
-    mutating func hx_replaceElement(at index: Int, with element: Element) {
+    public mutating func hx_replaceElement(at index: Int, with element: Element) {
         if index > count - 1 || index < 0 {
             return
         }
@@ -26,7 +26,7 @@ extension Array {
     /// 随机获取一个元素
     ///
     /// - Returns: 取出的元素
-    func hx_randomElement() -> Element? {
+    public func hx_randomElement() -> Element? {
         return randomElement()
     }
     
@@ -36,7 +36,7 @@ extension Array {
     ///   - size: 元素个数
     ///   - shouldRepeat: 取出的元素是否可以重复，默认不可以
     /// - Returns: 取出的元素数组
-    func hx_randomElements(size: Int, shouldRepeat: Bool = false) -> [Element]? {
+    public func hx_randomElements(size: Int, shouldRepeat: Bool = false) -> [Element]? {
         guard count > 0 else { return nil }
         var randomElements: [Element] = []
         if shouldRepeat {
@@ -70,14 +70,14 @@ extension Array where Element: Equatable {
     /// 删除元素
     ///
     /// - Parameter elements: 要删除的元素，为可变参数
-    mutating func hx_remove(_ elements: Element...) {
+    public mutating func hx_remove(_ elements: Element...) {
         hx_remove(elements)
     }
     
     /// 删除元素
     ///
     /// - Parameter elements: 要删除的元素，为数组
-    mutating func hx_remove(_ elements: [Element]) {
+    public mutating func hx_remove(_ elements: [Element]) {
         for element in elements {
             if let index = index(of: element) {
                 remove(at: index)
@@ -91,7 +91,7 @@ extension Array where Element: Equatable {
 extension Array where Element: Codable {
     
     /// 转换为jsonString
-    var hx_jsonString: String? {
+    public var hx_jsonString: String? {
         guard let data = try? JSONEncoder().encode(self),
             let jsonString = String(data: data, encoding: .utf8) else {
                 return nil
@@ -102,7 +102,7 @@ extension Array where Element: Codable {
     /// 通过jsonString创建实例
     ///
     /// - Parameter jsonString: jsonString
-    init?(jsonString: String) {
+    public init?(jsonString: String) {
         guard let jsonData = jsonString.data(using: .utf8),
             let array = try? JSONDecoder().decode(Array.self, from: jsonData) else {
                 return nil

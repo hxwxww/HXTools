@@ -12,7 +12,7 @@ import UIKit
 extension UIView {
     
     /// 获取所属的viewController
-    var hx_viewController: UIViewController? {
+    open var hx_viewController: UIViewController? {
         var nextView: UIView? = self
         while nextView?.superview != nil {
             nextView = nextView?.superview
@@ -26,7 +26,7 @@ extension UIView {
     /// 移除指定类型的子视图
     ///
     /// - Parameter subviewClass: 需要移除的子视图类型，默认为UIView
-    func hx_removeSubviews(_ subviewClass: AnyClass = UIView.self) {
+    open func hx_removeSubviews(_ subviewClass: AnyClass = UIView.self) {
         for subview in self.subviews {
             if subview.isKind(of: subviewClass) {
                 subview.removeFromSuperview()
@@ -40,7 +40,7 @@ extension UIView {
     ///   - rect: 截图范围，默认为CGRect.zero
     ///   - scale: 图片缩放因子，默认为屏幕缩放因子
     /// - Returns: 截图
-    func hx_snapshotImage(_ rect: CGRect = .zero, scale: CGFloat = UIScreen.main.scale) -> UIImage? {
+    open func hx_snapshotImage(_ rect: CGRect = .zero, scale: CGFloat = UIScreen.main.scale) -> UIImage? {
         // 获取整个区域图片
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, scale)
         defer {

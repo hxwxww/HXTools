@@ -9,21 +9,21 @@
 import UIKit
 
 /// 点击回调
-typealias HXAlertHandler = (HXAlertHandleType) -> ()
+public typealias HXAlertHandler = (HXAlertHandleType) -> ()
 
 /// 点击的按钮类型
 ///
 /// - `default`: 默认的按钮
 /// - cancel: 取消
 /// - destructive: 警告
-enum HXAlertHandleType {
+public enum HXAlertHandleType {
     case `default`(index: Int)
     case cancel
     case destructive
 }
 
 // MARK: - UIAlertController简单封装
-struct HXAlertTool {
+public struct HXAlertTool {
     
     /// 弹出提示框
     ///
@@ -35,7 +35,7 @@ struct HXAlertTool {
     ///   - destructiveTitle: 警告按钮标题，默认为nil
     ///   - defaultTitles: 正常按钮标题，可输入多个
     ///   - handler: 回调
-    static func showAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style = .alert, cancelTitle: String?, destructiveTitle: String? = nil, defaultTitles: [String]?, handler: HXAlertHandler?) {
+    public static func showAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style = .alert, cancelTitle: String?, destructiveTitle: String? = nil, defaultTitles: [String]?, handler: HXAlertHandler?) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
         if let cancelTitle = cancelTitle {
             let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel) { (_) in
@@ -69,7 +69,7 @@ struct HXAlertTool {
     ///   - preferredStyle: 样式，默认为alert
     ///   - cancelTitle: 按钮标题
     ///   - handler: 回调，默认为nil
-    static func showSimpleAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style = .alert, cancelTitle: String?, handler: HXAlertHandler? = nil) {
+    public static func showSimpleAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style = .alert, cancelTitle: String?, handler: HXAlertHandler? = nil) {
         showAlert(title: title, message: message, preferredStyle: preferredStyle, cancelTitle: cancelTitle, destructiveTitle: nil, defaultTitles: nil, handler: nil)
     }
     

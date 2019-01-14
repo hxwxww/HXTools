@@ -19,7 +19,7 @@ extension String {
     ///   - index: 要插入的位置
     /// - Returns: 结果字符串
     @discardableResult
-    mutating func hx_insert(_ text: String, at index: Int) -> String {
+    public mutating func hx_insert(_ text: String, at index: Int) -> String {
         if index > count - 1 || index < 0 {
             return self
         }
@@ -35,7 +35,7 @@ extension String {
     ///   - index: 要插入的位置
     /// - Returns: 结果字符串
     @discardableResult
-    mutating func hx_insert(_ text: Character, at index: Int) -> String {
+    public mutating func hx_insert(_ text: Character, at index: Int) -> String {
         if index > count - 1 || index < 0 {
             return self
         }
@@ -49,7 +49,7 @@ extension String {
     /// - Parameter text: 要删除的字符串
     /// - Returns: 结果字符串
     @discardableResult
-    mutating func hx_remove(_ text: String) -> String {
+    public mutating func hx_remove(_ text: String) -> String {
         if let removeIndex = range(of: text) {
             removeSubrange(removeIndex)
         }
@@ -63,7 +63,7 @@ extension String {
     ///   - length: 删除的字符串长度
     /// - Returns: 结果字符串
     @discardableResult
-    mutating func hx_remove(at index: Int, length: Int) -> String {
+    public mutating func hx_remove(at index: Int, length: Int) -> String {
         if index > count - 1 || index < 0 || length < 0 || index + length > count {
             return self
         }
@@ -78,7 +78,7 @@ extension String {
     /// - Parameter index: 要删除的位置
     /// - Returns: 结果字符串
     @discardableResult
-    mutating func hx_remove(at index: Int) -> String {
+    public mutating func hx_remove(at index: Int) -> String {
         if index > count - 1 || index < 0 {
             return self
         }
@@ -95,7 +95,7 @@ extension String {
     ///   - text: 要替换成的字符串
     /// - Returns: 结果字符串
     @discardableResult
-    mutating func hx_replaceText(at index: Int, length: Int, with text: String) -> String {
+    public mutating func hx_replaceText(at index: Int, length: Int, with text: String) -> String {
         if index > count - 1 || index < 0 || length < 0 || index + length > count {
             return self
         }
@@ -111,7 +111,7 @@ extension String {
     ///   - index: 截取的字符串起始位置
     ///   - length: 截取的字符串长度
     /// - Returns: 截取的字符串
-    func hx_substring(at index: Int, length: Int) -> String {
+    public func hx_substring(at index: Int, length: Int) -> String {
         if index > count - 1 || index < 0 || length < 0 || index + length > count {
             return self
         }
@@ -124,7 +124,7 @@ extension String {
     ///
     /// - Parameter index: 截取的字符串起始位置
     /// - Returns: 截取的字符串
-    func hx_substring(from index: Int) -> String {
+    public func hx_substring(from index: Int) -> String {
         if index > count - 1 || index < 0 {
             return self
         }
@@ -135,7 +135,7 @@ extension String {
     ///
     /// - Parameter index: 截取的字符串结束位置
     /// - Returns: 截取的字符串
-    func hx_substring(to index: Int) -> String {
+    public func hx_substring(to index: Int) -> String {
         if index > count - 1 || index < 0 {
             return self
         }
@@ -145,7 +145,7 @@ extension String {
     /// 去除左右的空格和换行符
     ///
     /// - Returns: 结果字符串
-    func trim() -> String {
+    public func trim() -> String {
         return trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
@@ -155,23 +155,23 @@ extension String {
 extension String {
     
     /// 编码之后的url
-    var hx_urlEncoded: String? {
+    public var hx_urlEncoded: String? {
         return addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
     }
     
     /// 解码之后的url
-    var hx_urlDecoded: String? {
+    public var hx_urlDecoded: String? {
         return removingPercentEncoding
     }
     
     /// base64编码之后的字符串
-    var hx_base64Encoded: String? {
+    public var hx_base64Encoded: String? {
         guard let base64Data = data(using: .utf8) else { return nil }
         return base64Data.base64EncodedString()
     }
     
     /// base64解码之后的字符串
-    var hx_base64Decoded: String? {
+    public var hx_base64Decoded: String? {
         guard let base64Data = Data(base64Encoded: self) else { return nil }
         return String(data: base64Data, encoding: .utf8)
     }
@@ -182,49 +182,49 @@ extension String {
 extension String {
     
     /// 是否是数字
-    var hx_isNumber: Bool {
+    public var hx_isNumber: Bool {
         let regex = "^[0-9]+$"
         let pred = NSPredicate(format: "SELF MATCHES %@", regex)
         return pred.evaluate(with: self)
     }
     
     /// 是否是字母
-    var hx_isLetter: Bool {
+    public var hx_isLetter: Bool {
         let regex = "^[A-Za-z]+$"
         let pred = NSPredicate(format: "SELF MATCHES %@", regex)
         return pred.evaluate(with: self)
     }
     
     /// 是否是手机号
-    var hx_isPhoneNumber: Bool {
+    public var hx_isPhoneNumber: Bool {
         let regex = "^1+[3456789]+\\d{9}$"
         let pred = NSPredicate(format: "SELF MATCHES %@", regex)
         return pred.evaluate(with: self)
     }
     
     /// 是否是身份证号
-    var hx_isIDNumber: Bool {
+    public var hx_isIDNumber: Bool {
         let regex = "^(\\d{14}|\\d{17})(\\d|[xX])$"
         let pred = NSPredicate(format: "SELF MATCHES %@", regex)
         return pred.evaluate(with: self)
     }
     
     /// 是否是6位数字
-    var hx_isSixNumber: Bool {
+    public var hx_isSixNumber: Bool {
         let regex = "^\\d{6}$"
         let pred = NSPredicate(format: "SELF MATCHES %@", regex)
         return pred.evaluate(with: self)
     }
     
     /// 是否是邮箱
-    var hx_isEmail: Bool {
+    public var hx_isEmail: Bool {
         let regex = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$"
         let pred = NSPredicate(format: "SELF MATCHES %@", regex)
         return pred.evaluate(with: self)
     }
     
     /// 是否是密码，6-20位
-    var hx_isPassword: Bool {
+    public var hx_isPassword: Bool {
         let regex = "^[@A-Za-z0-9!#\\$%\\^&*\\.~_]{6,20}$"
         let pred = NSPredicate(format: "SELF MATCHES %@", regex)
         return pred.evaluate(with: self)
@@ -241,7 +241,7 @@ extension String {
     ///   - size: 限定的size
     ///   - font: 字体
     /// - Returns: 计算出的尺寸
-    func hx_size(with size: CGSize, font: UIFont) -> CGSize {
+    public func hx_size(with size: CGSize, font: UIFont) -> CGSize {
         if isEmpty {
             return .zero
         }
@@ -255,7 +255,7 @@ extension String {
     ///   - width: 限定的宽度
     ///   - font: 字体
     /// - Returns: 计算出的高度
-    func hx_height(with width: CGFloat, font: UIFont) -> CGFloat {
+    public func hx_height(with width: CGFloat, font: UIFont) -> CGFloat {
         let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         return hx_size(with: size, font: font).height
     }
@@ -264,7 +264,7 @@ extension String {
     ///
     /// - Parameter font: 字体
     /// - Returns: 计算出的宽度
-    func hx_width(with font: UIFont) -> CGFloat {
+    public func hx_width(with font: UIFont) -> CGFloat {
         let size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 0)
         return hx_size(with: size, font: font).width
     }

@@ -15,7 +15,7 @@ extension UIImage {
     /// - Parameters:
     ///   - color: 颜色
     ///   - size: 图片尺寸
-    convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
+    public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContext(size)
         defer {
@@ -33,7 +33,7 @@ extension UIImage {
     ///
     /// - Parameter point: 目标点，x、y为0-1之间的数，表示在图片中的点的比例位置
     /// - Returns: 得到的颜色
-    func hx_color(at point: CGPoint) -> UIColor? {
+    open func hx_color(at point: CGPoint) -> UIColor? {
         guard let imageRef = cgImage else { return nil }
         let realPointX = Int(CGFloat(imageRef.width) * point.x) + 1
         let realPointY = Int(CGFloat(imageRef.height) * point.y) + 1
@@ -63,7 +63,7 @@ extension UIImage {
     ///
     /// - Parameter scale: 缩放比例
     /// - Returns: 缩放后的图片
-    func hx_resize(with scale: CGFloat) -> UIImage {
+    open func hx_resize(with scale: CGFloat) -> UIImage {
         let newSize = size.applying(CGAffineTransform(scaleX: scale, y: scale))
         return hx_resize(to: newSize)
     }
@@ -72,7 +72,7 @@ extension UIImage {
     ///
     /// - Parameter newSize: 新尺寸
     /// - Returns: 缩放后的图片
-    func hx_resize(to newSize: CGSize) -> UIImage {
+    open func hx_resize(to newSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContext(newSize)
         defer {
             UIGraphicsEndImageContext()

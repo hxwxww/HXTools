@@ -15,7 +15,7 @@ import UIKit
 ///   - filePath: 文件路径
 ///   - methodName: 方法名
 ///   - line: 行数
-func HXLog<T>(_ message: T, filePath: String = #file, methodName: String = #function, line: Int = #line) {
+public func HXLog<T>(_ message: T, filePath: String = #file, methodName: String = #function, line: Int = #line) {
     #if DEBUG
     let fileName = (filePath as NSString).lastPathComponent.components(separatedBy: ".").first!
     print("==>> \(fileName).\(methodName)[\(line)]: \(message) \n")
@@ -26,7 +26,7 @@ func HXLog<T>(_ message: T, filePath: String = #file, methodName: String = #func
 ///
 /// - Parameter rootVC: 底部VC
 /// - Returns: 结果
-func hx_topViewController(_ rootVC: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+public func hx_topViewController(_ rootVC: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
     if let tabbarVC = rootVC as? UITabBarController, let selectedVC = tabbarVC.selectedViewController  {
         return hx_topViewController(selectedVC)
     } else if let naviVC = rootVC as? UINavigationController, let visibleVC = naviVC.visibleViewController {
@@ -40,7 +40,7 @@ func hx_topViewController(_ rootVC: UIViewController? = UIApplication.shared.key
 ///  打印类的所有实例变量
 ///
 /// - Parameter aClass: 目标类
-func hx_printIvars(_ aClass: AnyClass) {
+public func hx_printIvars(_ aClass: AnyClass) {
     HXLog("开始打印 =======")
     var count: UInt32 = 0
     let ivars = class_copyIvarList(aClass, &count)
@@ -55,7 +55,7 @@ func hx_printIvars(_ aClass: AnyClass) {
 ///  打印类的所有属性变量
 ///
 /// - Parameter aClass: 目标类
-func hx_printProperties(_ aClass: AnyClass) {
+public func hx_printProperties(_ aClass: AnyClass) {
     HXLog("开始打印 =======")
     var count: UInt32 = 0
     let properties = class_copyPropertyList(aClass, &count)
@@ -70,7 +70,7 @@ func hx_printProperties(_ aClass: AnyClass) {
 /// 打印类的所有方法
 ///
 /// - Parameter aClass: 目标类
-func hx_printMethods(_ aClass: AnyClass) {
+public func hx_printMethods(_ aClass: AnyClass) {
     HXLog("开始打印 =======")
     var count: UInt32 = 0
     let methods = class_copyMethodList(aClass, &count)

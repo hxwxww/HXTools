@@ -12,54 +12,54 @@ import Foundation
 extension Date {
     
     /// 时间戳
-    var hx_timestamp: TimeInterval {
+    public var hx_timestamp: TimeInterval {
         return timeIntervalSince1970
     }
     
     /// 通过时间戳创建实例
     ///
     /// - Parameter timestamp: 时间戳
-    init(timestamp: TimeInterval) {
+    public init(timestamp: TimeInterval) {
         self.init(timeIntervalSince1970: timestamp)
     }
     
     /// 年
-    var hx_year: Int {
+    public var hx_year: Int {
         return NSCalendar.current.component(.year, from: self)
     }
     
     /// 月
-    var hx_month: Int {
+    public var hx_month: Int {
         return NSCalendar.current.component(.month, from: self)
     }
     
     /// 日
-    var hx_day: Int {
+    public var hx_day: Int {
         return NSCalendar.current.component(.day, from: self)
     }
     
     /// 时
-    var hx_hour: Int {
+    public var hx_hour: Int {
         return NSCalendar.current.component(.hour, from: self)
     }
     
     /// 分
-    var hx_minute: Int {
+    public var hx_minute: Int {
         return NSCalendar.current.component(.minute, from: self)
     }
     
     /// 秒
-    var hx_second: Int {
+    public var hx_second: Int {
         return NSCalendar.current.component(.second, from: self)
     }
     
     /// 星期几，数字(1~7)
-    var hx_weekday: Int {
+    public var hx_weekday: Int {
         return NSCalendar.current.component(.weekday, from: self)
     }
     
     /// 星期几，中文名称（星期一、星期二...星期日）
-    var hx_weekdayName: String {
+    public var hx_weekdayName: String {
         guard let weekdayName = Weekday(rawValue: hx_weekday)?.description else {
             fatalError("Error: weekday:\(hx_weekday)")
         }
@@ -67,12 +67,12 @@ extension Date {
     }
     
     /// 是否是今天
-    var hx_isToday: Bool {
+    public var hx_isToday: Bool {
         return NSCalendar.current.isDateInToday(self)
     }
     
     /// 是否是昨天
-    var hx_isYesterday: Bool {
+    public var hx_isYesterday: Bool {
         return NSCalendar.current.isDateInYesterday(self)
     }
     
@@ -85,7 +85,7 @@ extension Date {
     ///
     /// - Parameter dateFormat: 格式
     /// - Returns: 时间字符串
-    func hx_string(with dateFormat: String = "yyyy-MM-dd HH:mm:ss") -> String {
+    public func hx_string(with dateFormat: String = "yyyy-MM-dd HH:mm:ss") -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
         return formatter.string(from: self)
@@ -96,7 +96,7 @@ extension Date {
     /// - Parameters:
     ///   - string: 字符串
     ///   - dateFormat: 格式
-    init?(string: String, dateFormat: String = "yyyy-MM-dd HH:mm:ss") {
+    public init?(string: String, dateFormat: String = "yyyy-MM-dd HH:mm:ss") {
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormat
         guard let date = formatter.date(from: string) else { return nil }
@@ -109,7 +109,7 @@ extension Date {
     ///   - timestamp: 时间戳
     ///   - showHour: 是否显示时分
     /// - Returns: 格式化后的字符串
-    static func hx_stringWithFormat(timestamp: TimeInterval, showHour: Bool = true) -> String {
+    public static func hx_stringWithFormat(timestamp: TimeInterval, showHour: Bool = true) -> String {
         let date = Date(timestamp: timestamp)
         return date.hx_stringWithFormat(showHour: showHour)
     }
@@ -118,7 +118,7 @@ extension Date {
     ///
     /// - Parameter showHour: 是否显示时分
     /// - Returns: 格式化后的字符串
-    func hx_stringWithFormat(showHour: Bool = true) -> String {
+    public func hx_stringWithFormat(showHour: Bool = true) -> String {
         let dateFormatter = DateFormatter()
         if hx_isToday {
             /// 如果是今天
@@ -145,7 +145,7 @@ extension Date {
     ///
     /// - Parameter date: 截止日期
     /// - Returns: 相隔天数
-    func hx_numberOfdays(to date: Date) -> Int {
+    public func hx_numberOfdays(to date: Date) -> Int {
         let components = Calendar.current.dateComponents([.day], from: self, to: date)
         return components.day ?? 0
     }
@@ -153,7 +153,7 @@ extension Date {
 }
 
 // MARK: -  Weekday简单封装
-enum Weekday: Int {
+public enum Weekday: Int {
     
     case sunday    = 1
     case monday    = 2

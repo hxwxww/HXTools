@@ -8,26 +8,26 @@
 
 import UIKit
 
-struct HXGlobalTool {
+public struct HXGlobalTool {
     
     /// 获取缓存文件路径
     ///
     /// - Returns: 结果
-    static func cachesDirectory() -> String {
+    public static func cachesDirectory() -> String {
         return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).last!
     }
     
     /// 获取持久文件路径
     ///
     /// - Returns: 结果
-    func documentDirectory() -> String {
+    public func documentDirectory() -> String {
         return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
     }
     
     /// 获取临时文件路径
     ///
     /// - Returns: 结果
-    func tmpDirectory() -> String {
+    public func tmpDirectory() -> String {
         return NSTemporaryDirectory()
     }
 
