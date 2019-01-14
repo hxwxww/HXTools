@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "HXTools"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "swift工具封装集合"
 
   # This description is used to generate tags and improve search results.
@@ -73,6 +73,7 @@ Pod::Spec.new do |s|
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
 
+  s.swift_version = "4.2"
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -91,7 +92,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "HXTools/**/*.{h,m,swift}"
+  s.source_files  = "Classes", "Classes/**/*.{h,m,swift}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"

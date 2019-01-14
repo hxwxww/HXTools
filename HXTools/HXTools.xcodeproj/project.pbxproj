@@ -108,7 +108,7 @@
 		AA79714C21CCDFEF00A75C22 /* HXTools */ = {
 			isa = PBXGroup;
 			children = (
-				AA79715F21CCDFFB00A75C22 /* HXTools */,
+				AA79715F21CCDFFB00A75C22 /* Classes */,
 				AA79714D21CCDFEF00A75C22 /* AppDelegate.swift */,
 				AA2F7AE221D4AB4400536267 /* DemoViewController.swift */,
 				AA79715121CCDFEF00A75C22 /* Main.storyboard */,
@@ -119,14 +119,14 @@
 			path = HXTools;
 			sourceTree = "<group>";
 		};
-		AA79715F21CCDFFB00A75C22 /* HXTools */ = {
+		AA79715F21CCDFFB00A75C22 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				AA2F7ABC21D49E4800536267 /* Global */,
 				AA3C863721D3358E002DBAE8 /* Extensions */,
 				AA2F7ABB21D49E3900536267 /* Custom */,
 			);
-			path = HXTools;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		AA79716221CCE04500A75C22 /* UIKit */ = {
