@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "HXTools"
-  s.version      = "0.0.2"
+  s.version      = "1.0.0"
   s.summary      = "swift工具封装集合"
 
   # This description is used to generate tags and improve search results.
