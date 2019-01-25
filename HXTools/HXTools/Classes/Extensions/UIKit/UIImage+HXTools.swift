@@ -81,5 +81,21 @@ extension UIImage {
         guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else { return self }
         return newImage
     }
+    
+    /// 剪切图片
+    ///
+    /// - Parameter rect: 剪切的范围
+    /// - Returns: 剪切后的图片
+    open func hx_cutImage(to rect: CGRect) -> UIImage {
+        guard let cgImage = cgImage,
+            let imageRef = cgImage.cropping(to: rect) else { return self }
+        let refRect = CGRect(x: 0, y: 0, width: imageRef.width, height: imageRef.height)
+        UIGraphicsBeginImageContext(refRect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context?.draw(imageRef, in: refRect)
+        let image = UIImage(cgImage: imageRef)
+        UIGraphicsEndImageContext()
+        return image
+    }
 
 }

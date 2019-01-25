@@ -145,7 +145,7 @@ extension String {
     /// 去除左右的空格和换行符
     ///
     /// - Returns: 结果字符串
-    public func trim() -> String {
+    public func hx_trim() -> String {
         return trimmingCharacters(in: .whitespacesAndNewlines)
     }
     

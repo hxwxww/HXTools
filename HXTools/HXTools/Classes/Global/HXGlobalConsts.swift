@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /// 主window
 public let hx_keyWindow = UIApplication.shared.keyWindow
 
